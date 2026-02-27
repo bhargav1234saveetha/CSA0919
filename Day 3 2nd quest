@@ -1,0 +1,41 @@
+import java.util.Scanner;
+
+public class StringToInteger {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter String: ");
+        String str = sc.nextLine();
+
+        int result = 0;
+        boolean isNegative = false;
+        int i = 0;
+
+        if (str.length() == 0) {
+            System.out.println("Invalid Input");
+            return;
+        }
+
+        if (str.charAt(0) == '-') {
+            isNegative = true;
+            i = 1;
+        }
+
+        for (; i < str.length(); i++) {
+            char ch = str.charAt(i);
+
+            if (ch < '0' || ch > '9') {
+                System.out.println("Invalid Input");
+                return;
+            }
+
+            result = result * 10 + (ch - '0');
+        }
+
+        if (isNegative) {
+            result = -result;
+        }
+
+        System.out.println("Out put String: " + result);
+        sc.close();
+    }
+}
