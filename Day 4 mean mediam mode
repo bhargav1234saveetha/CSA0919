@@ -1,0 +1,37 @@
+import java.util.Arrays;
+import java.util.HashMap;
+
+public class MeanMedianMode {
+    public static void main(String[] args) {
+
+        double[] arr = {16, 18, 27, 16, 23, 21, 19};
+
+        // Mean
+        double sum = 0;
+        for (double num : arr)
+            sum += num;
+
+        double mean = sum / arr.length;
+
+        // Median
+        Arrays.sort(arr);
+        double median = arr[arr.length / 2];
+
+        // Mode
+        HashMap<Double, Integer> freq = new HashMap<>();
+        double mode = arr[0];
+        int maxCount = 0;
+
+        for (double num : arr) {
+            freq.put(num, freq.getOrDefault(num, 0) + 1);
+            if (freq.get(num) > maxCount) {
+                maxCount = freq.get(num);
+                mode = num;
+            }
+        }
+
+        System.out.println("Mean = " + mean);
+        System.out.println("Median = " + median);
+        System.out.println("Mode = " + mode);
+    }
+}
